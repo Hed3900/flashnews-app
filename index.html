@@ -1501,14 +1501,14 @@ updateClock();
 
 setInterval(updateClock,1000);
 </script>
-<button onclick="loadMoreNews()"
+  <button id="loadBtn"
 
-id="loadBtn">
+onclick="loadMoreNews()">
 
 Load News
 
 </button>
-
+  
 <script>
   function toggleMode(){
 
@@ -2100,6 +2100,69 @@ document.getElementById(
 currentIndex += 5;
 
     }
+    let currentIndex = 0;
+
+let allPosts = [];
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
+
+.then(response => response.json())
+
+.then(data => {
+
+allPosts = data.items;
+
+loadMoreNews();
+
+});
+    function loadMoreNews(){
+
+let output = "";
+
+for(
+
+let i=currentIndex;
+
+i<currentIndex+5
+
+&&
+
+i<allPosts.length;
+
+i++
+
+){
+
+output += `
+
+<div class="card">
+
+<img src="${allPosts[i]
+.thumbnail
+.replace('s72-c','s1200')}"
+
+class="newsImg">
+
+<h2>
+
+🔥 ${allPosts[i].title}
+
+</h2>
+
+</div>
+
+`;
+
+}
+
+document.getElementById(
+
+"newsBox"
+
+).innerHTML += output;
+
+currentIndex += 5;
+
+  }
 </script>
 <div class="bottom-nav">
 
