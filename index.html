@@ -1280,7 +1280,11 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site
 
 let output = "";
 
-for(let i=0; i<data.items.length; i++){
+for(let i=0;
+
+i<data.items.length && i<50;
+
+i++){
 
 output += `
 
