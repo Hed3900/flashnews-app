@@ -1243,6 +1243,71 @@ padding:15px;
 font-size:18px;
 
 }
+  .footer{
+
+background:#111;
+
+padding:40px 20px;
+
+text-align:center;
+
+color:white;
+
+margin-top:40px;
+
+border-top:2px solid red;
+
+}
+
+.footer h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+}
+
+.footer p{
+
+color:#bbb;
+
+font-size:15px;
+
+}
+
+.footerLinks{
+
+margin:25px 0;
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.footerLinks a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+}
+
+.copy{
+
+margin-top:20px;
+
+font-size:14px;
+
+color:#777;
+
+}
 </Style>
 
 </head>
@@ -1567,30 +1632,6 @@ document.getElementById(
 updateClock();
 
 setInterval(updateClock,1000);
-</script>
-
-  <button id="loadBtn">
-
-🔄 Load News
-
-</button>
-
-<script>
-
-window.onload = function(){
-
-document.getElementById(
-
-"loadBtn"
-
-).onclick = function(){
-
-location.reload();
-
-};
-
-};
-
 </script>
 <script>
   function toggleMode(){
@@ -2285,5 +2326,54 @@ behavior:'smooth'
 📡 No Internet Connection
 
 </div>
+    <footer class="footer">
+
+<h2>
+
+⚡ FlashNews24
+
+</h2>
+
+<p>
+
+Breaking News • World • Tech • Sports
+
+</p>
+
+<div class="footerLinks">
+
+<a href="index.html">
+
+🏠 Home
+
+</a>
+
+<a href="videos.html">
+
+🎥 Videos
+
+</a>
+
+<a href="trending.html">
+
+🔥 Trending
+
+</a>
+
+<a href="profile.html">
+
+👤 Profile
+
+</a>
+
+</div>
+
+<p class="copy">
+
+© 2026 FlashNews24
+
+</p>
+
+</footer>
 </body>
 </html>
