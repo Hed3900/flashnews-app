@@ -1192,7 +1192,9 @@ onclick="filterNews('weather')">
 <div id="newsBox"></div>
 <script>
 fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
+
 .then(response => response.json())
+
 .then(data => {
 
 let output = "";
@@ -1200,20 +1202,13 @@ let output = "";
 for(let i=0; i<data.items.length; i++){
 
 output += `
-...
-`;
-
-}
-
-document.getElementById("newsBox").innerHTML = output;
-
-});
 
 <a href="${data.items[i].link}"
 
 target="_blank"
 
-style="text-decoration:none;">
+style="text-decoration:none;
+color:white;">
 
 <div class="card">
 
@@ -1223,16 +1218,24 @@ style="text-decoration:none;">
 
 class="newsImg">
 
-<h2>${data.items[i].title}</h2>
+<h2>
+
+🔥 ${data.items[i].title}
+
+</h2>
+
 <div class="actions">
 
 <button class="likeBtn"
-onclick="likeNews(this)">
+
+onclick="likeNews(this);
+return false;">
 
 🤍 Like
 
 </button>
-            <button class="saveBtn"
+
+<button class="saveBtn"
 
 onclick="saveNews(
 '${data.items[i].title}',
@@ -1240,32 +1243,81 @@ onclick="saveNews(
 '${data.items[i]
 .thumbnail
 .replace("s72-c","s1200")}'
-)">
+);
+
+return false;">
 
 ⭐ Save
 
 </button>
+
 <button class="shareBtn"
 
 onclick="shareNews(
 '${data.items[i].title}',
 '${data.items[i].link}'
-)">
+);
+
+return false;">
 
 📤 Share
 
 </button>
+
 </div>
+
 </div>
+
 </a>
+
 `;
 
 }
 
-document.getElementById("newsBox")
-.innerHTML = output;
+document.getElementById(
+
+"newsBox"
+
+).innerHTML = output;
 
 });
+
+function likeNews(btn){
+
+btn.innerHTML = "❤️ Liked";
+
+}
+
+function saveNews(title,link,image){
+
+let saved = JSON.parse(
+
+localStorage.getItem("savedNews")
+
+) || [];
+
+saved.push({
+
+title:title,
+
+link:link,
+
+image:image
+
+});
+
+localStorage.setItem(
+
+"savedNews",
+
+JSON.stringify(saved)
+
+);
+
+alert("⭐ Saved");
+
+}
+
 function shareNews(title,link){
 
 navigator.share({
@@ -1278,7 +1330,7 @@ url:link
 
 });
 
-}
+  }
   async function loadBreaking(){
 
 let res = await fetch(
