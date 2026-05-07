@@ -1501,8 +1501,12 @@ updateClock();
 
 setInterval(updateClock,1000);
 </script>
-<button class="btn" onclick="showNews()">
+<button onclick="loadMoreNews()"
+
+id="loadBtn">
+
 Load News
+
 </button>
 
 <script>
@@ -2020,6 +2024,82 @@ document.getElementById(
 now.toLocaleTimeString();
 
 },1000);
+  function loadMoreNews(){
+
+let output = "";
+
+for(
+
+let i=currentIndex;
+
+i<currentIndex+5 && i<allPosts.length;
+
+i++
+
+){
+
+output += `
+
+<a href="${allPosts[i].link}"
+
+target="_blank"
+
+style="text-decoration:none;
+color:white;">
+
+<div class="card">
+
+<img src="${allPosts[i]
+.thumbnail
+.replace('s72-c','s1200')}"
+
+class="newsImg">
+
+<h2>
+
+🔥 ${allPosts[i].title}
+
+</h2>
+
+<div class="actions">
+
+<button class="likeBtn">
+
+🤍 Like
+
+</button>
+
+<button class="saveBtn">
+
+⭐ Save
+
+</button>
+
+<button class="shareBtn">
+
+📤 Share
+
+</button>
+
+</div>
+
+</div>
+
+</a>
+
+`;
+
+}
+
+document.getElementById(
+
+"newsBox"
+
+).innerHTML += output;
+
+currentIndex += 5;
+
+    }
 </script>
 <div class="bottom-nav">
 
