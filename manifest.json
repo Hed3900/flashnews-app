@@ -1,15 +1,16 @@
 {
-"name":"Flash News",
-"short_name":"Flash",
-"display":"standalone",
-"start_url":"index.html",
-"background_color":"#000000",
-"theme_color":"#ff0000",
-"icons":[
-{
-"src":"icon.png",
-"sizes":"512x512",
-"type":"image/png"
-}
-]
+  "name":"Flash News",
+  "short_name":"Flash",
+  "start_url":"/flashnews-app/index.html",
+  "display":"standalone",
+  "display_override":["standalone"],
+  "background_color":"#000000",
+  "theme_color":"#ff0000",
+  "icons":[
+    {
+      "src":"icon.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ]
 }
