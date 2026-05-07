@@ -1227,9 +1227,15 @@ onclick="likeNews(this)">
 🤍 Like
 
 </button>
+            <button class="saveBtn"
 
-<button class="saveBtn"
-onclick="saveNews()">
+onclick="saveNews(
+'${data.items[i].title}',
+'${data.items[i].link}',
+'${data.items[i]
+.thumbnail
+.replace("s72-c","s1200")}'
+)">
 
 ⭐ Save
 
@@ -1713,6 +1719,35 @@ if("serviceWorker" in navigator){
 
 navigator.serviceWorker
 .register("sw.js");
+
+}
+  function saveNews(title,link,image){
+
+let saved = JSON.parse(
+
+localStorage.getItem("savedNews")
+
+) || [];
+
+saved.push({
+
+title:title,
+
+link:link,
+
+image:image
+
+});
+
+localStorage.setItem(
+
+"savedNews",
+
+JSON.stringify(saved)
+
+);
+
+alert("⭐ Saved");
 
 }
 </script>
