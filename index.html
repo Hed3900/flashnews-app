@@ -1568,12 +1568,30 @@ updateClock();
 
 setInterval(updateClock,1000);
 </script>
-  
+
   <button id="loadBtn">
 
 🔄 Load News
 
 </button>
+
+<script>
+
+window.onload = function(){
+
+document.getElementById(
+
+"loadBtn"
+
+).onclick = function(){
+
+location.reload();
+
+};
+
+};
+
+</script>
 <script>
   function toggleMode(){
 
@@ -2165,19 +2183,6 @@ document.getElementById(
 currentIndex += 5;
 
     }
-    document.getElementById(
-
-"loadBtn"
-
-).addEventListener(
-
-"click",
-
-function(){
-
-location.reload();
-
-});
 </script>
 <div class="bottom-nav">
 
