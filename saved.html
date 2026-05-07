@@ -1,27 +1,81 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
 <title>Saved News</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
 <style>
 
 body{
-background:#111;
+
+background:black;
+
 color:white;
+
 font-family:Arial;
+
+margin:0;
+
 padding:20px;
+
 }
 
 .card{
-background:#222;
+
+background:#111;
+
+border-radius:25px;
+
+overflow:hidden;
+
+margin-bottom:25px;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+
+}
+
+.card img{
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+}
+
+.card h2{
+
 padding:20px;
+
+font-size:24px;
+
+line-height:1.4;
+
+}
+
+.openBtn{
+
+display:block;
+
+margin:20px;
+
+padding:15px;
+
+background:red;
+
+color:white;
+
+text-align:center;
+
 border-radius:15px;
-margin-top:20px;
+
+text-decoration:none;
+
+font-size:20px;
+
 }
 
 </style>
@@ -30,19 +84,59 @@ margin-top:20px;
 
 <body>
 
-<h1>⭐ Saved News</h1>
+<h1>
 
-<div class="card" id="savedBox">
+⭐ Saved News
+
+</h1>
+
+<div id="savedBox">
 
 </div>
 
 <script>
 
-let saved =
-localStorage.getItem("savedNews");
+let saved = JSON.parse(
 
-document.getElementById("savedBox")
-.innerHTML = saved;
+localStorage.getItem("savedNews")
+
+) || [];
+
+let output = "";
+
+saved.forEach(news => {
+
+output += `
+
+<div class="card">
+
+<img src="${news.image}">
+
+<h2>
+
+🔥 ${news.title}
+
+</h2>
+
+<a href="${news.link}"
+
+class="openBtn">
+
+Read News
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(
+
+"savedBox"
+
+).innerHTML = output;
 
 </script>
 
