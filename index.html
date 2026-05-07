@@ -1191,8 +1191,7 @@ onclick="filterNews('weather')">
 </div>
 <div id="newsBox"></div>
 <script>
-
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default?max-results=50")
 
 .then(response => response.json())
 
