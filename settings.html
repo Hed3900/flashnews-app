@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Settings</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+.card{
+
+background:#222;
+
+padding:20px;
+
+border-radius:15px;
+
+margin-top:20px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+background:red;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>⚙️ Settings</h1>
+
+<div class="card">
+
+<h2>Flash News App</h2>
+
+<p>Version 1.0</p>
+
+<button onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+<script>
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href =
+"login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

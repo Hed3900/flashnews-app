@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Article</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+img{
+width:100%;
+border-radius:15px;
+}
+
+h1{
+font-size:32px;
+}
+
+p{
+font-size:20px;
+line-height:1.6;
+color:#ccc;
+}
+#shareBtn{
+
+margin-top:20px;
+
+padding:15px 25px;
+
+background:red;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+#saveBtn{
+
+margin-top:15px;
+
+padding:15px 25px;
+
+background:gold;
+
+color:black;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+</style>
+
+</head>
+
+<body>
+
+<img src="https://picsum.photos/600/300">
+
+<h1>Breaking News Article 🔥</h1>
+<p>
+
+This is full article page of Flash News app.
+You can write complete news content here 😄
+
+</p>
+
+<button onclick="shareNews()" id="shareBtn">
+
+📤 Share News
+
+</button>
+<button onclick="saveNews()" id="saveBtn">
+
+⭐ Save News
+
+</button>
+<script>
+
+function shareNews(){
+
+navigator.share({
+
+title:"Flash News",
+
+text:"Check this breaking news from Flash News 🔥",
+
+url:window.location.href
+
+});
+
+}
+function saveNews(){
+
+localStorage.setItem(
+"savedNews",
+"Breaking News Article Saved 🔥"
+);
+
+alert("News Saved 😄");
+
+}
+</script>
+</body>
+
+</html>

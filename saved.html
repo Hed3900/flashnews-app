@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Saved News</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+.card{
+background:#222;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>⭐ Saved News</h1>
+
+<div class="card" id="savedBox">
+
+</div>
+
+<script>
+
+let saved =
+localStorage.getItem("savedNews");
+
+document.getElementById("savedBox")
+.innerHTML = saved;
+
+</script>
+
+</body>
+
+</html>

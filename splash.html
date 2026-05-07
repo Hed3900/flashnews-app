@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Splash Screen</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:black;
+color:white;
+font-family:Arial;
+flex-direction:column;
+}
+
+h1{
+font-size:40px;
+color:red;
+}
+
+p{
+color:gray;
+}
+.logo{
+
+font-size:55px;
+
+animation:zoom 2s infinite;
+
+text-shadow:0 0 20px red;
+
+}
+
+@keyframes zoom{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 class="logo">
+⚡ Flash News
+</h1>
+<p>Loading...</p>
+
+<script>
+
+setTimeout(function(){
+
+window.location.href = "login.html";
+
+},800);
+
+</script>
+
+</body>
+</html>
