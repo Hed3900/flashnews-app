@@ -1829,6 +1829,21 @@ data.items[1].title +
 data.items[2].title;
 
 });
+  setInterval(()=>{
+
+let now = new Date();
+
+document.getElementById(
+
+"timeBox"
+
+).innerHTML =
+
+"⏰ " +
+
+now.toLocaleTimeString();
+
+},1000);
 </script>
 <div class="bottom-nav">
 
