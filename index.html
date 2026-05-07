@@ -2166,7 +2166,64 @@ document.getElementById(
 currentIndex += 5;
 
     }
-    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
+</script>
+<div class="categoryGrid" id="categoryGrid"></div>
+
+<style>
+
+.categoryGrid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+padding:20px;
+
+}
+
+.catPost{
+
+background:#111;
+
+border-radius:25px;
+
+overflow:hidden;
+
+color:white;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+}
+
+.catPost img{
+
+width:100%;
+
+height:130px;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.catPost h3{
+
+padding:15px;
+
+font-size:18px;
+
+line-height:1.4;
+
+}
+
+</style>
+
+<script>
+
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
 
 .then(res => res.json())
 
@@ -2174,19 +2231,27 @@ currentIndex += 5;
 
 let output = "";
 
-for(let i=0; i<3; i++){
+for(let i=0; i<4; i++){
+
+let img = "icon.png";
+
+if(data.items[i].thumbnail){
+
+img = data.items[i]
+.thumbnail
+.replace("s72-c","s1200");
+
+}
 
 output += `
 
 <div class="catPost">
 
-<img src="${data.items[i]
-.thumbnail
-.replace('s72-c','s1200')}">
+<img src="${img}">
 
 <h3>
 
-${data.items[i].title}
+🔥 ${data.items[i].title}
 
 </h3>
 
@@ -2203,10 +2268,8 @@ document.getElementById(
 ).innerHTML = output;
 
 });
-</script>
-    <div class="categoryGrid" id="categoryGrid">
 
-</div>
+</script>
 <div class="bottom-nav">
 
 <div class="active">
