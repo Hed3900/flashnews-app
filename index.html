@@ -1368,7 +1368,45 @@ font-weight:bold;
 position:relative;
 
 }
+.news-card{
 
+background:#111;
+
+padding:15px;
+
+margin:20px;
+
+border-radius:20px;
+
+color:white;
+
+}
+
+.news-card img{
+
+width:100%;
+
+border-radius:15px;
+
+}
+
+.news-card a{
+
+display:inline-block;
+
+margin-top:10px;
+
+padding:10px 20px;
+
+background:red;
+
+color:white;
+
+border-radius:10px;
+
+text-decoration:none;
+
+}
 </Style>
 
 </head>
@@ -1449,6 +1487,7 @@ onclick="location.reload()">
 
 </button>
 </div>
+  <div id="newsContainer"></div>
 <div id="skeleton">
 
 <div class="skeleton-card"></div>
@@ -2352,5 +2391,51 @@ Breaking News • World • Tech • Sports
 </p>
 
 </footer>
+    <script>
+
+async function loadNews(){
+
+const apiKey =
+"YOUR_API_KEY";
+
+const url =
+`https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=10&apikey=${apiKey}`;
+
+const response = await fetch(url);
+
+const data = await response.json();
+
+const newsContainer =
+document.getElementById("newsContainer");
+
+newsContainer.innerHTML = "";
+
+data.articles.forEach(article => {
+
+newsContainer.innerHTML += `
+
+<div class="news-card">
+
+<img src="${article.image}" />
+
+<h2>${article.title}</h2>
+
+<a href="${article.url}" target="_blank">
+
+Read More
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadNews();
+
+</script>
 </body>
 </html>
