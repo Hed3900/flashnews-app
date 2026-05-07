@@ -1,148 +1,82 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-
-content="width=device-width,
-initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Flash Videos</title>
 
 <style>
 
 body{
-
 margin:0;
-
 background:black;
-
-font-family:Arial;
-
+font-family:Arial,sans-serif;
 color:white;
-
-padding-bottom:100px;
-
 }
 
-header{
+/* HEADER */
 
+.header{
 background:red;
-
 padding:25px;
-
 text-align:center;
-
-font-size:26px;
-
+font-size:38px;
 font-weight:bold;
-
-position:sticky;
-
-top:0;
-
-z-index:999;
-
+box-shadow:0 0 20px red;
 }
 
-#videosBox{
+/* SECTION TITLE */
 
-padding:20px;
-
+.sectionTitle{
+font-size:32px;
+padding:25px;
+font-weight:bold;
 }
+
+/* VIDEO CARD */
 
 .videoCard{
-
 background:#111;
-
-border-radius:25px;
-
+margin:25px;
+border-radius:30px;
 overflow:hidden;
-
-margin-bottom:30px;
-
-box-shadow:0 8px 25px rgba(0,0,0,0.4);
-
+box-shadow:0 0 20px rgba(255,0,0,0.2);
 }
 
-.videoCard h2{
-
-padding:20px;
-
-font-size:24px;
-
-}
-
-iframe{
-
+.videoCard iframe{
 width:100%;
-
 height:250px;
-
 border:none;
-
 }
 
-.bottomNav{
+.videoTitle{
+padding:20px;
+font-size:26px;
+font-weight:bold;
+line-height:1.5;
+}
 
-position:fixed;
+/* FOOTER */
 
-bottom:0;
-
-width:100%;
-
-height:75px;
-
+.footer{
 background:#111;
+padding:40px 20px;
+text-align:center;
+margin-top:50px;
+border-top:2px solid red;
+}
 
-display:flex;
+.footer h2{
+font-size:35px;
+margin-bottom:15px;
+}
 
-justify-content:space-around;
-
-align-items:center;
-
+.footer p{
 font-size:18px;
-
-border-top:2px solid #222;
-
-}
-
-.bottomNav a{
-
-color:white;
-
-text-decoration:none;
-
-}
-
-#topBtn{
-
-position:fixed;
-
-bottom:100px;
-
-right:20px;
-
-width:65px;
-
-height:65px;
-
-border:none;
-
-border-radius:50%;
-
-background:red;
-
-color:white;
-
-font-size:30px;
-
-z-index:999;
-
+color:#aaa;
 }
 
 </style>
@@ -151,90 +85,127 @@ z-index:999;
 
 <body>
 
-<header>
+<!-- HEADER -->
 
-🎥 Flash Videos
+<div class="header">
 
-</header>
+🎬 Flash Videos
 
-<div id="videosBox">
+</div>
 
-<div class="videoCard">
+<!-- TRENDING -->
 
-<iframe
-src="https://www.youtube.com/embed/3PDQTwy_9H8"
-allowfullscreen>
-</iframe>
+<div class="sectionTitle">
 
-<h2>🔥 Flash News Short 1</h2>
+🔥 Trending Videos
 
 </div>
 
 <div class="videoCard">
 
-<iframe
-src="https://www.youtube.com/embed/S_ZBAJFoHFU"
-allowfullscreen>
-</iframe>
+<iframe src="https://www.youtube.com/embed/3PDQTwy_9H8"></iframe>
 
-<h2>⚡ Flash News Short 2</h2>
+<div class="videoTitle">
+
+🚨 Breaking News Update
+
+</div>
 
 </div>
 
 <div class="videoCard">
 
-<iframe
-src="https://www.youtube.com/embed/gT8_hVkLmAY"
-allowfullscreen>
-</iframe>
+<iframe src="https://www.youtube.com/embed/S_ZBAJFoHFU"></iframe>
 
-<h2>🚨 Flash News Short 3</h2>
+<div class="videoTitle">
+
+🌍 Viral Global News Clip
 
 </div>
+
 </div>
 
-<button id="topBtn"
+<div class="videoCard">
 
-onclick="window.scrollTo({
+<iframe src="https://www.youtube.com/embed/gT8_hVkLmAY"></iframe>
 
-top:0,
+<div class="videoTitle">
 
-behavior:'smooth'
+⚡ Flash News Special Report
 
-})">
+</div>
 
-⬆
+</div>
 
-</button>
+<!-- LATEST SHORTS -->
 
-<div class="bottomNav">
+<div class="sectionTitle">
 
-<a href="index.html">
+🎬 Latest Shorts
 
-🏠 Home
+</div>
 
-</a>
+<div class="videoCard">
 
-<a href="videos.html">
+<iframe src="https://www.youtube.com/embed/3PDQTwy_9H8"></iframe>
 
-🎥 Videos
+<div class="videoTitle">
 
-</a>
+🔥 Trending Shorts
 
-<a href="trending.html">
+</div>
 
-🔥 Trending
+</div>
 
-</a>
+<div class="videoCard">
 
-<a href="profile.html">
+<iframe src="https://www.youtube.com/embed/S_ZBAJFoHFU"></iframe>
 
-👤 Profile
+<div class="videoTitle">
 
-</a>
+🚨 Breaking Shorts Clip
+
+</div>
+
+</div>
+
+<!-- BREAKING CLIPS -->
+
+<div class="sectionTitle">
+
+🚨 Breaking Clips
+
+</div>
+
+<div class="videoCard">
+
+<iframe src="https://www.youtube.com/embed/gT8_hVkLmAY"></iframe>
+
+<div class="videoTitle">
+
+⚡ Exclusive Flash Clip
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<h2>
+
+⚡ Flash News
+
+</h2>
+
+<p>
+
+Breaking News • Trending Videos • Viral Shorts 🌍🔥
+
+</p>
 
 </div>
 
 </body>
-
 </html>
