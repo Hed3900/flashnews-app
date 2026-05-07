@@ -1104,9 +1104,9 @@ style="padding-left:15px;">
 
 </h2>
 <div class="ticker">
-<marquee id="breaking">
+<marquee id="breakingNews">
 
-🔥 Loading Breaking News...
+🔥 Breaking News Loading...
 
 </marquee>
 </div>
@@ -1750,6 +1750,35 @@ JSON.stringify(saved)
 alert("⭐ Saved");
 
 }
+  fetch(
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default"
+
+)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+document.getElementById(
+
+"breakingNews"
+
+).innerHTML =
+
+"🔥 " +
+
+data.items[0].title +
+
+" ⚡ " +
+
+data.items[1].title +
+
+" ⚡ " +
+
+data.items[2].title;
+
+});
 </script>
 <div class="bottom-nav">
 
