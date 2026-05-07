@@ -70,33 +70,7 @@ font-size:18px;
 font-weight:bold;
 
 }
-  #installBtn{
-
-position:fixed;
-
-bottom:90px;
-
-right:20px;
-
-padding:15px 22px;
-
-border:none;
-
-border-radius:40px;
-
-background:red;
-
-color:white;
-
-font-size:18px;
-
-font-weight:bold;
-
-z-index:9999;
-
-display:none;
-
-  }
+  
 </style>
 
 </head>
@@ -148,41 +122,8 @@ localStorage.setItem(
 alert("News Saved 😄");
 
 }
-  let deferredPrompt;
 
-window.addEventListener(
-
-"beforeinstallprompt",
-
-(e)=>{
-
-e.preventDefault();
-
-deferredPrompt = e;
-
-document.getElementById(
-"installBtn"
-).style.display="block";
-
-});
-
-document.getElementById(
-"installBtn"
-).addEventListener(
-
-"click",
-
-async()=>{
-
-deferredPrompt.prompt();
-
-});
 </script>
-  <button id="installBtn">
-
-📲 Install App
-
-  </button>
 </body>
 
 </html>
