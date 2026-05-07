@@ -1305,6 +1305,25 @@ data.items[2].title;
 }
 
 loadBreaking();
+  function updateClock(){
+
+let now = new Date();
+
+let time = now.toLocaleTimeString();
+
+document.getElementById(
+
+"clockBox"
+
+).innerHTML =
+
+"⏰ " + time;
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
 </script>
 <button class="btn" onclick="showNews()">
 Load News
