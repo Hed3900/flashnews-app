@@ -1106,7 +1106,7 @@ style="padding-left:15px;">
 <div class="ticker">
 <marquee id="breakingNews">
 
-🔥 Breaking News Loading...
+🔥 Loading...
 
 </marquee>
 </div>
@@ -1274,6 +1274,37 @@ url:link
 });
 
 }
+  async function loadBreaking(){
+
+let res = await fetch(
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default"
+
+);
+
+let data = await res.json();
+
+document.getElementById(
+
+"breakingNews"
+
+).innerHTML =
+
+"🔥 " +
+
+data.items[0].title +
+
+" ⚡ " +
+
+data.items[1].title +
+
+" ⚡ " +
+
+data.items[2].title;
+
+}
+
+loadBreaking();
 </script>
 <button class="btn" onclick="showNews()">
 Load News
