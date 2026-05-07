@@ -1230,7 +1230,7 @@ color:white;
 
 width:100%;
 
-height:120px;
+height:130px;
 
 object-fit:cover;
 
@@ -1240,7 +1240,7 @@ object-fit:cover;
 
 padding:15px;
 
-font-size:20px;
+font-size:18px;
 
 }
 </Style>
@@ -2166,45 +2166,45 @@ document.getElementById(
 currentIndex += 5;
 
     }
-    
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
+
+.then(res => res.json())
+
+.then(data => {
+
+let output = "";
+
+for(let i=0; i<3; i++){
+
+output += `
+
+<div class="catPost">
+
+<img src="${data.items[i]
+.thumbnail
+.replace('s72-c','s1200')}">
+
+<h3>
+
+${data.items[i].title}
+
+</h3>
+
+</div>
+
+`;
+
+}
+
+document.getElementById(
+
+"categoryGrid"
+
+).innerHTML = output;
+
+});
 </script>
-    <div class="categoryGrid">
-
-<div class="catPost">
-
-<img src="IMAGE_LINK">
-
-<h3>
-
-🌍 World News
-
-</h3>
-
-</div>
-
-<div class="catPost">
-
-<img src="IMAGE_LINK">
-
-<h3>
-
-⚽ Sports
-
-</h3>
-
-</div>
-
-<div class="catPost">
-
-<img src="IMAGE_LINK">
-
-<h3>
-
-💻 Tech
-
-</h3>
-
-</div>
+    <div class="categoryGrid" id="categoryGrid">
 
 </div>
 <div class="bottom-nav">
