@@ -14,7 +14,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-background:black;
+background:linear-gradient(180deg,#000,#140000,#000);
 color:white;
 font-family:Arial;
 flex-direction:column;
@@ -22,7 +22,8 @@ flex-direction:column;
 
 h1{
 font-size:40px;
-color:red;
+color:#ff2b2b;
+text-shadow:0 0 15px red;
 }
 
 p{
@@ -52,6 +53,16 @@ transform:scale(1.1);
 transform:scale(1);
 }
 
+}
+  p{
+  color:#bbb;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:0.3;}
+  50%{opacity:1;}
+  100%{opacity:0.3;}
 }
 </style>
 
