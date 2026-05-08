@@ -1495,6 +1495,61 @@ onclick="location.reload()">
 
 </div>
 <div id="newsContainer"></div>
+
+<script>
+
+fetch("https://flashnews24.site/feeds/posts/default?alt=json")
+
+.then(res => res.json())
+
+.then(data => {
+
+const posts = data.feed.entry;
+
+const container =
+document.getElementById("newsContainer");
+
+container.innerHTML = "";
+
+posts.forEach(post => {
+
+const title = post.title.$t;
+
+const link =
+post.link.find(l => l.rel === "alternate").href;
+
+let image = "";
+
+if(post.media$thumbnail){
+
+image =
+post.media$thumbnail.url;
+
+}
+
+container.innerHTML += `
+
+<div class="news-card">
+
+<img src="${image}">
+
+<h2>${title}</h2>
+
+<a href="${link}" target="_blank">
+
+Read More
+
+</a>
+
+</div>
+
+`;
+
+});
+
+});
+
+</script>
   
 <div id="newsBox"></div>
 <script>
