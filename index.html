@@ -1692,6 +1692,7 @@ transform:translateY(0);
 }
 
 }
+  
   </Style>
 
 </head>
@@ -2675,6 +2676,36 @@ topbar.style.top="0";
 }
 
 lastScroll = current;
+
+});
+  
+  function toggleMenu(){
+
+document
+.querySelector(".sidebar")
+.classList.toggle("active");
+
+document
+.querySelector(".overlay")
+.classList.toggle("active");
+
+  }
+  document
+.querySelector(".overlay")
+
+.addEventListener(
+
+"click",
+
+()=>{
+
+document
+.querySelector(".sidebar")
+.classList.remove("active");
+
+document
+.querySelector(".overlay")
+.classList.remove("active");
 
 });
   
