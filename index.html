@@ -1644,63 +1644,153 @@ document.getElementById(
 });
 
 </script>
-<div id="newsContainer"></div>
-
+<div id="newsBox"></div>
 <script>
-
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/news")
-
-.then(res => res.json())
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/breakingnews")
+.then(response => response.json())
 
 .then(data => {
 
-const posts = data.feed.entry;
+let output = "";
 
-const container =
-document.getElementById("newsContainer");
+for(let i=0;
 
-container.innerHTML = "";
+i<data.items.length && i<50;
 
-posts.forEach(post => {
+i++){
 
-const title = post.title.$t;
+output += `
 
-const link =
-post.link.find(l => l.rel === "alternate").href;
+<a href="${data.items[i].link}"
 
-let image = "";
+target="_blank"
 
-if(post.media$thumbnail){
+style="text-decoration:none;
+color:white;">
 
-image =
-post.media$thumbnail.url;
+<div class="card">
 
-}
+<img src="${data.items[i]
+.thumbnail
+.replace('s72-c','s1200')}"
 
-container.innerHTML += `
+class="newsImg">
 
-<div class="news-card">
+<h2>
 
-<img src="${image}">
+🔥 ${data.items[i].title}
 
-<h2>${title}</h2>
+</h2>
 
-<a href="${link}" target="_blank">
+<div class="actions">
 
-Read More
+<button class="likeBtn"
 
-</a>
+onclick="likeNews(this);
+return false;">
+
+🤍 Like
+
+</button>
+
+<button class="saveBtn"
+
+onclick="saveNews(
+'${data.items[i].title}',
+'${data.items[i].link}',
+'${data.items[i]
+.thumbnail
+.replace("s72-c","s1200")}'
+);
+
+return false;">
+
+⭐ Save
+
+</button>
+
+<button class="shareBtn"
+
+onclick="shareNews(
+'${data.items[i].title}',
+'${data.items[i].link}'
+);
+
+return false;">
+
+📤 Share
+
+</button>
 
 </div>
 
+</div>
+
+</a>
+
 `;
 
-});
+}
+
+document.getElementById(
+
+"newsBox"
+
+).innerHTML = output;
 
 });
 
+function likeNews(btn){
+
+btn.innerHTML = "❤️ Liked";
+
+}
+
+function saveNews(title,link,image){
+
+let saved = JSON.parse(
+
+localStorage.getItem("savedNews")
+
+) || [];
+
+saved.push({
+
+title:title,
+
+link:link,
+
+image:image
+
+});
+
+localStorage.setItem(
+
+"savedNews",
+
+JSON.stringify(saved)
+
+);
+
+alert("⭐ Saved");
+
+}
+
+function shareNews(title,link){
+
+navigator.share({
+
+title:title,
+
+text:title,
+
+url:link
+
+});
+
+  }
 </script>
-  
+
 <div id="newsBox"></div>
 <script>
   fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/BreakingNews")
