@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ni<!DOCTYPE html>
 <html>
 <head>
   <link rel="apple-touch-icon" href="favicon.png">
@@ -1415,6 +1415,53 @@ border-radius:10px;
   transform:scale(1.1);
   box-shadow:0 0 25px red;
 }
+.topbar{
+backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.7);
+border-bottom:1px solid #ff000055;
+}
+.news-card{
+transition:0.3s;
+}
+
+.news-card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px #ff000088;
+}
+button,
+.readBtn{
+
+transition:0.3s ease;
+
+}
+
+button:active,
+.readBtn:active{
+
+transform:scale(0.95);
+
+}
+
+
+.breaking{
+
+animation:glow 1.5s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+box-shadow:0 0 5px red;
+}
+
+to{
+box-shadow:0 0 20px red;
+}
+
+}
+
+
   </Style>
 
 </head>
