@@ -1753,7 +1753,48 @@ transition:0.4s;
 z-index:9999;
 
 }
-  
+  .light{
+
+background:white;
+
+color:black;
+
+}
+
+.light .card{
+
+background:#f1f1f1;
+
+color:black;
+
+}
+
+.light .topbar{
+
+background:#ddd;
+
+color:black;
+
+}
+  #modeBtn{
+
+margin:10px;
+
+padding:12px 20px;
+
+background:white;
+
+color:black;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:bold;
+
+  }
   </Style>
 
 </head>
@@ -1805,19 +1846,17 @@ document
 }
 
 </script>
-<button id="modeBtn" onclick="toggleMode()">
+<button onclick="toggleMode()" id="modeBtn">
 🌙 Dark Mode
 </button>
   <script>
-
 function toggleMode(){
 
-document.body.classList.toggle(
-"dark-mode"
-);
+let body = document.body;
 
-}
+body.classList.toggle("light");
 
+  }
 </script>
 <div id="sideMenu">
 
