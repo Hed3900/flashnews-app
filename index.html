@@ -1795,6 +1795,73 @@ font-size:16px;
 font-weight:bold;
 
   }
+  #menuBtn{
+
+position:fixed;
+
+top:15px;
+
+left:15px;
+
+font-size:30px;
+
+color:white;
+
+z-index:1000;
+
+}
+
+#sideMenu{
+
+height:100%;
+
+width:0;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+background:#111;
+
+overflow-x:hidden;
+
+transition:0.3s;
+
+padding-top:60px;
+
+z-index:999;
+
+}
+
+#sideMenu h2{
+
+color:red;
+
+padding-left:20px;
+
+}
+
+#sideMenu a{
+
+padding:15px 20px;
+
+display:block;
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+}
+
+#sideMenu a:hover{
+
+background:#222;
+
+}
   </Style>
 
 </head>
@@ -1802,6 +1869,42 @@ font-weight:bold;
 <body>
   <div id="menuBtn" onclick="openMenu()">
 ☰
+</div>
+
+<div id="sideMenu">
+
+<h2>Flash News ⚡</h2>
+
+<a href="index.html">🏠 Home</a>
+
+<a href="videos.html">🎥 Videos</a>
+
+<a href="trending.html">🔥 Trending</a>
+
+<a href="profile.html">👤 Profile</a>
+<a href="#" onclick="logoutUser()">
+
+🚪 Logout
+
+</a>
+  <script>
+  function openMenu(){
+
+let menu =
+document.getElementById("sideMenu");
+
+if(menu.style.width == "250px"){
+
+menu.style.width = "0";
+
+}else{
+
+menu.style.width = "250px";
+
+}
+
+  }
+  </script>
 </div>
   <div id="overlay"
 onclick="closeMenu()">
@@ -1858,23 +1961,6 @@ body.classList.toggle("light");
 
   }
 </script>
-<div id="sideMenu">
-
-<h2>Flash News ⚡</h2>
-
-<a href="index.html">🏠 Home</a>
-
-<a href="videos.html">🎥 Videos</a>
-
-<a href="trending.html">🔥 Trending</a>
-
-<a href="profile.html">👤 Profile</a>
-<a href="#" onclick="logoutUser()">
-
-🚪 Logout
-
-</a>
-</div>
   <div id="loader"></div>
 <div class="topbar">
 ⚡ Flash News
