@@ -1605,7 +1605,7 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site
 
 let output = "";
 
-for(let i=0; i<4; i++){
+for(let i=0; i<16; i++){
 
 let img = "icon.png";
 
@@ -1646,7 +1646,7 @@ document.getElementById(
 </script>
 <div id="newsBox"></div>
 <script>
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/breakingnews")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/jobs")
 .then(response => response.json())
 
 .then(data => {
@@ -1787,13 +1787,11 @@ text:title,
 url:link
 
 });
-
-  }
 </script>
 
 <div id="newsBox"></div>
 <script>
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/BreakingNews")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/breakingnews")
 .then(response => response.json())
 
 .then(data => {
