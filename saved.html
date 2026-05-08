@@ -3,6 +3,7 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="style.css">
 
 <title>Saved News</title>
 
@@ -77,7 +78,67 @@ text-decoration:none;
 font-size:20px;
 
 }
+.bottomNav{
 
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:70px;
+
+background:#111;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+border-top:1px solid #ff000055;
+
+backdrop-filter:blur(10px);
+
+z-index:9999;
+
+}
+
+.bottomNav a{
+
+color:white;
+
+font-size:28px;
+
+text-decoration:none;
+
+transition:0.3s;
+
+}
+
+.bottomNav a:hover{
+
+color:red;
+
+transform:scale(1.2);
+
+}
+  body{
+
+padding-bottom:90px;
+
+  }
+  .bottomNav a.active{
+
+color:red;
+
+transform:scale(1.2);
+
+text-shadow:0 0 15px red;
+
+  }
 </style>
 
 </head>
@@ -139,7 +200,19 @@ document.getElementById(
 ).innerHTML = output;
 
 </script>
+<div class="bottomNav">
 
+<a href="index.html">🏠</a>
+
+<a href="videos.html">🎥</a>
+
+<a href="trending.html">🔥</a>
+
+<a href="saved.html"> class="active">⭐</a>
+
+<a href="profile.html">👤</a>
+
+</div>
 </body>
 
 </html>
