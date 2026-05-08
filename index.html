@@ -2420,8 +2420,8 @@ data.items.forEach(post => {
 container.innerHTML += `
 
 <div class="news-card">
-
-<img src="${post.thumbnail}" width="100%">
+let image =
+post.media$thumbnail.url.replace("s72-c","s1200");
 
 <h2>${post.title}</h2>
 
