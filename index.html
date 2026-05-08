@@ -1704,6 +1704,17 @@ transform:translateY(0);
 <button onclick="toggleMode()" id="modeBtn">
 🌙 Dark Mode
 </button>
+  <script>
+
+function toggleMode(){
+
+document.body.classList.toggle(
+"dark-mode"
+);
+
+}
+
+</script>
 <div id="sideMenu">
 
 <h2>Flash News ⚡</h2>
@@ -2708,7 +2719,18 @@ document
 .classList.remove("active");
 
 });
-  
+  const darkBtn =
+document.getElementById(
+"darkBtn"
+);
+
+darkBtn.onclick = ()=>{
+
+document.body.classList.toggle(
+"dark-mode"
+);
+
+};
 </script>
 <div id="themeBox">
 
