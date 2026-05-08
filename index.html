@@ -1504,7 +1504,7 @@ onclick="location.reload()">
   
 <div id="newsBox"></div>
 <script>
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/latest news")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/BreakingNews")
 .then(response => response.json())
 
 .then(data => {
@@ -2058,33 +2058,6 @@ document.getElementById(
 "🔥 BREAKING: " + firstTitle;
 
 },2000);
-let startY = 0;
-
-window.addEventListener(
-"touchstart",
-
-e=>{
-
-startY =
-e.touches[0].clientY;
-
-});
-
-window.addEventListener(
-"touchend",
-
-e=>{
-
-let endY =
-e.changedTouches[0].clientY;
-
-if(endY - startY > 120){
-
-location.reload();
-
-}
-
-});
 window.onscroll = ()=>{
 
 if(window.scrollY > 500){
