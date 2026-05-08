@@ -1976,43 +1976,7 @@ updateClock();
 setInterval(updateClock,1000);
 </script>
 <script>
-  function toggleMode(){
 
-let body = document.body;
-
-body.classList.toggle("light");
-
-}
-document.addEventListener(
-"click",
-
-function(e){
-
-const sidebar =
-document.querySelector(
-".sidebar"
-);
-const menuBtn =
-document.querySelector(
-".menuBtn"
-);
-
-if(
-
-!sidebar.contains(e.target)
-
-&&
-
-!menuBtn.contains(e.target)
-
-){
-
-sidebar.classList.remove(
-"active"
-);
-
-}
-  
   function searchNews(){
 
 let input =
