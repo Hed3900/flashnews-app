@@ -1890,20 +1890,39 @@ background:#222;
   <script>
   function openMenu(){
 
-let menu =
-document.getElementById("sideMenu");
+document
+.getElementById(
+"sideMenu"
+)
 
-if(menu.style.width == "250px"){
+.style.left = "0";
 
-menu.style.width = "0";
+document
+.getElementById(
+"overlay"
+)
 
-}else{
-
-menu.style.width = "250px";
+.style.display = "block";
 
 }
 
-  }
+function closeMenu(){
+
+document
+.getElementById(
+"sideMenu"
+)
+
+.style.left = "-280px";
+
+document
+.getElementById(
+"overlay"
+)
+
+.style.display = "none";
+
+}
   </script>
 </div>
   <div id="overlay"
