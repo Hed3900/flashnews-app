@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="style.css">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +79,58 @@ margin-bottom:15px;
 font-size:18px;
 color:#aaa;
 }
+.bottomNav{
 
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:70px;
+
+background:#111;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+border-top:1px solid #ff000055;
+
+backdrop-filter:blur(10px);
+
+z-index:9999;
+
+}
+
+.bottomNav a{
+
+color:white;
+
+font-size:28px;
+
+text-decoration:none;
+
+transition:0.3s;
+
+}
+
+.bottomNav a:hover{
+
+color:red;
+
+transform:scale(1.2);
+
+}
+  body{
+
+padding-bottom:90px;
+
+  }
 </style>
 
 </head>
@@ -206,6 +258,18 @@ Breaking News • Trending Videos • Viral Shorts 🌍🔥
 </p>
 
 </div>
+<div class="bottomNav">
 
+<a href="index.html">🏠</a>
+
+<a href="videos.html">🎥</a>
+
+<a href="trending.html">🔥</a>
+
+<a href="saved.html">⭐</a>
+
+<a href="profile.html">👤</a>
+
+</div>
 </body>
 </html>
