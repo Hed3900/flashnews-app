@@ -1405,6 +1405,11 @@ color:white;
 overscroll-behavior-y:none;
 
   }
+  html, body {
+  overscroll-behavior-y: contain;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  }
   </Style>
 
 </head>
@@ -2495,5 +2500,20 @@ Breaking News • World • Tech • Sports
 </p>
 
 </footer>
+  <script>
+let startY = 0;
+
+document.addEventListener("touchstart", e => {
+  startY = e.touches[0].pageY;
+}, { passive: true });
+
+document.addEventListener("touchmove", e => {
+  let moveY = e.touches[0].pageY;
+
+  if(window.scrollY === 0 && moveY > startY){
+    e.preventDefault();
+  }
+}, { passive: false });
+  </script>
 </body>
 </html>
