@@ -1368,29 +1368,19 @@ text-decoration:none;
 border-radius:10px;
 
 }
-body{
+html, body {
 
-margin:0;
-
-overflow:hidden;
-
-background:black;
-
-color:white;
+overscroll-behavior-y: contain;
 
 }
-  #app{
+  body{
 
-height:100vh;
+overflow-x:hidden;
 
-overflow-y:auto;
-
--webkit-overflow-scrolling:touch;
-
-overscroll-behavior:none;
+touch-action:pan-x pan-y;
 
   }
-</Style>
+  </Style>
 
 </head>
 
@@ -2480,10 +2470,5 @@ Breaking News • World • Tech • Sports
 </p>
 
 </footer>
-  <div id="app">
-
-...ALL CONTENT...
-
-  </div>
 </body>
 </html>
