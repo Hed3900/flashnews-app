@@ -2584,6 +2584,38 @@ document
 .classList.toggle("active");
 
   }
+  document.addEventListener(
+"click",
+
+function(e){
+
+const sidebar =
+document.querySelector(
+".sidebar"
+);
+
+const menuBtn =
+document.querySelector(
+".menuBtn"
+);
+
+if(
+
+!sidebar.contains(e.target)
+
+&&
+
+!menuBtn.contains(e.target)
+
+){
+
+sidebar.classList.remove(
+"active"
+);
+
+}
+
+});
 </script>
 <div id="themeBox">
 
