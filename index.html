@@ -1454,6 +1454,43 @@ border-radius:10px;
 text-decoration:none;
 
 }
+  .news-card{
+
+background:#111;
+
+margin:20px;
+
+padding:15px;
+
+border-radius:20px;
+
+color:white;
+
+}
+
+.news-card img{
+
+border-radius:15px;
+
+}
+
+.news-card a{
+
+display:inline-block;
+
+margin-top:10px;
+
+padding:10px 20px;
+
+background:red;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+}
 </Style>
 
 </head>
@@ -2357,6 +2394,52 @@ currentIndex += 5;
 </div>
 <div id="suggestions"></div>
 </div>
+    <div id="newsContainer"></div>
+
+<script>
+
+const rssUrl =
+"https://flashnews24.site/feeds/posts/default?alt=rss";
+
+const api =
+`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+fetch(api)
+
+.then(response => response.json())
+
+.then(data => {
+
+const container =
+document.getElementById("newsContainer");
+
+container.innerHTML = "";
+
+data.items.forEach(post => {
+
+container.innerHTML += `
+
+<div class="news-card">
+
+<img src="${post.thumbnail}" width="100%">
+
+<h2>${post.title}</h2>
+
+<a href="${post.link}" target="_blank">
+
+Read More
+
+</a>
+
+</div>
+
+`;
+
+});
+
+});
+
+</script>
 <div id="themeBox">
 
 <button onclick="changeTheme('red')">
@@ -2437,50 +2520,6 @@ Breaking News • World • Tech • Sports
 </p>
 
 </footer>
-    <script>
-
-async function loadNews(){
-
-const apiKey = "ca0b639207ef82a12b43c4fcb4027da3";
-
-const url =
-`https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=10&apikey=${apiKey}`;
-
-const response = await fetch(url);
-
-const data = await response.json();
-
-const newsContainer =
-document.getElementById("newsContainer");
-
-newsContainer.innerHTML = "";
-
-data.articles.forEach(article => {
-
-newsContainer.innerHTML += `
-
-<div class="news-card">
-
-<img src="${article.image}" />
-
-<h2>${article.title}</h2>
-
-<a href="${article.url}" target="_blank">
-
-Read More
-
-</a>
-
-</div>
-
-`;
-
-});
-
-}
-
-loadNews();
-
-</script>
+  
 </body>
 </html>
