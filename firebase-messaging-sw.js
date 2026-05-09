@@ -16,32 +16,39 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage(function(payload) {
-  console.log(
-    '[firebase-messaging-sw.js] Received background message ',
-    payload
-  );
 
   const notificationTitle =
-    payload.notification?.title || 'Flash News';
+    payload.notification?.title || "Flash News";
 
   const notificationOptions = {
-  body: payload.notification?.body || "Breaking news update",
-  icon: "https://hed3900.github.io/flashnews-app/icon-192.png",
+    body:
+      payload.notification?.body || "Breaking news update",
 
-  data: {
-    url: payload.data?.url || "https://hed3900.github.io/flashnews-app/"
-  }
-};
+    icon:
+      "https://hed3900.github.io/flashnews-app/icon-192.png",
+
+    data: {
+      url:
+        payload.data?.url ||
+        "https://hed3900.github.io/flashnews-app/"
+    }
+  };
+
+  self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
+});
+
 self.addEventListener("notificationclick", function(event) {
 
-event.notification.close();
+  event.notification.close();
 
-const url = event.notification.data?.url || "https://hed3900.github.io/flashnews-app/";
+  const url =
+    event.notification.data?.url ||
+    "https://hed3900.github.io/flashnews-app/";
 
-event.waitUntil(
-
-clients.openWindow(url)
-
-);
-
+  event.waitUntil(
+    clients.openWindow(url)
+  );
 });
