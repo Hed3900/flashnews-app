@@ -292,6 +292,7 @@ transform:scale(1.2);
 text-shadow:0 0 15px red;
 
   }
+  
 </style>
 
 </head>
@@ -335,7 +336,88 @@ behavior:'smooth'
 ⬆
 
 </button>
+<div id="newsBox"></div>
 
+<script>
+
+fetch(
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/USA"
+)
+
+.then(res => res.json())
+
+.then(data => {
+
+let output = "";
+
+data.items.forEach(post => {
+
+output += `
+
+<div class="card">
+
+<img src="${post.thumbnail}" width="100%">
+
+<h2>${post.title}</h2>
+
+<p>
+
+${post.description.slice(0,120)}
+
+...
+
+</p>
+
+<a href="${post.link}" target="_blank">
+
+Read More
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(
+"newsBox"
+).innerHTML = output;
+
+});
+
+</script>
+  <style>
+
+.card{
+
+background:#111;
+padding:15px;
+margin:15px;
+border-radius:15px;
+color:white;
+
+}
+
+.card img{
+
+border-radius:12px;
+
+}
+
+.card a{
+
+display:inline-block;
+margin-top:10px;
+background:red;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+
+}
+
+  </style>
 <div class="bottomNav">
 
 <a href="index.html">
