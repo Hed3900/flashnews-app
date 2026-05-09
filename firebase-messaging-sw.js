@@ -1,31 +1,37 @@
-importScripts(
-'https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js'
-);
+// firebase-messaging-sw.js
 
-importScripts(
-'https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js'
-);
+importScripts('https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging-compat.js');
 
 firebase.initializeApp({
-
-apiKey: "AIzaSyALYtdua5TsOHOCMhcCGB943fdJD63BbS0",
-
-authDomain:
-"flashnews24-51c47.firebaseapp.com",
-
-projectId:
-"flashnews24-51c47",
-
-storageBucket:
-"flashnews24-51c47.firebasestorage.app",
-
-messagingSenderId:
-"685448664344",
-
-appId:
-"1:685448664344:web:e88275c1470dad9b97426d"
-
+  apiKey: "AIzaSyALYtdua5TsOHOCmH2CGB943fdJD63BbS0",
+  authDomain: "flashnews24-51c47.firebaseapp.com",
+  projectId: "flashnews24-51c47",
+  storageBucket: "flashnews24-51c47.firebasestorage.app",
+  messagingSenderId: "585448664344",
+  appId: "1:585448664344:web:e88275c1470dad9b97426d",
+  measurementId: "G-TFYSDH8M2J"
 });
 
-const messaging =
-firebase.messaging();
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function(payload) {
+  console.log(
+    '[firebase-messaging-sw.js] Received background message ',
+    payload
+  );
+
+  const notificationTitle =
+    payload.notification?.title || 'Flash News';
+
+  const notificationOptions = {
+    body:
+      payload.notification?.body || 'Breaking news update',
+    icon: 'https://hed3900.github.io/flashnews-pwa/icon-192.png'
+  };
+
+  self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
+});
