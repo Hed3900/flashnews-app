@@ -27,7 +27,7 @@ messaging.onBackgroundMessage(function(payload) {
   const notificationOptions = {
     body:
       payload.notification?.body || 'Breaking news update',
-    icon: 'https://hed3900.github.io/flashnews-pwa/icon-192.png'
+   icon: 'https://hed3900.github.io/flashnews-app/icon-192.png''
   };
 
   self.registration.showNotification(
