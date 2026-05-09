@@ -1,20 +1,26 @@
-self.addEventListener(
-"install",
+const CACHE_NAME = "flashnews-v2";
 
-e=>{
-
-e.waitUntil(
-
-caches.open("flashnews-v1")
-
-.then(cache=>{
-
-return cache.addAll([
+const urlsToCache = [
 
 "/",
-"index.html"
 
-]);
+"/index.html",
+
+"/manifest.json",
+
+"/icon.png"
+
+];
+
+self.addEventListener("install", event => {
+
+event.waitUntil(
+
+caches.open(CACHE_NAME)
+
+.then(cache => {
+
+return cache.addAll(urlsToCache);
 
 })
 
@@ -22,20 +28,21 @@ return cache.addAll([
 
 });
 
-self.addEventListener(
-"fetch",
+self.addEventListener("fetch", event => {
 
-e=>{
+event.respondWith(
 
-e.respondWith(
+caches.match(event.request)
 
-caches.match(e.request)
+.then(response => {
 
-.then(response=>{
+return response || fetch(event.request);
 
-return response ||
+})
 
-fetch(e.request);
+.catch(() => {
+
+return caches.match("/index.html");
 
 })
 
