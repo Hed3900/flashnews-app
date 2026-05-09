@@ -3163,5 +3163,24 @@ currentToken
 });
 
   </script>
+  <script>
+
+Notification.requestPermission()
+
+.then(permission=>{
+
+if(permission==="granted"){
+
+alert(
+"Notifications Enabled 🔔"
+);
+
+}
+
+});
+
+</script>
+
+</body>
 </body>
 </html>
