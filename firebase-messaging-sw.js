@@ -8,8 +8,8 @@ firebase.initializeApp({
   authDomain: "flashnews24-51c47.firebaseapp.com",
   projectId: "flashnews24-51c47",
   storageBucket: "flashnews24-51c47.firebasestorage.app",
-  messagingSenderId: "685448664344",
-  appId: "1:685448664344:web:e88275c1470dad9b97426d",
+  messagingSenderId: "585448664344",
+  appId: "1:585448664344:web:e88275c1470dad9b97426d",
   measurementId: "G-TFYSDH8M2J"
 });
 
