@@ -3152,16 +3152,27 @@ vapidKey:
 
 if(currentToken){
 
-console.log(
+alert(currentToken);
 
-currentToken
-
-);
+console.log(currentToken);
 
 }
 
-});
+else{
 
+alert("No token");
+
+}
+
+})
+
+.catch((err)=>{
+
+alert(err);
+
+console.log(err);
+
+});
   </script>
   <script>
 
@@ -3183,21 +3194,7 @@ alert(
 });
 
 }
-.then((currentToken)=>{
 
-if(currentToken){
-
-console.log(
-currentToken
-);
-
-alert(
-currentToken
-);
-
-}
-
-});
   </script>
 </body>
 </html>
