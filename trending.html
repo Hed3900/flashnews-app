@@ -461,6 +461,26 @@ url:link
 });
 
 }
+function saveNews(button){
+
+let title =
+button.parentElement.querySelector("h2").innerText;
+
+localStorage.setItem(
+"savedNews",
+title
+);
+
+alert("News Saved ⭐");
+
+}
+
+let saved =
+localStorage.getItem("savedNews");
+
+document.getElementById(
+"savedBox"
+).innerHTML = saved;
 
 </script>
 <div class="bottomNav">
