@@ -35,3 +35,16 @@ messaging.onBackgroundMessage(function(payload) {
     notificationOptions
   );
 });
+self.addEventListener("notificationclick", function(event) {
+
+event.notification.close();
+
+const url = event.notification.data?.url || "https://hed3900.github.io/flashnews-app/";
+
+event.waitUntil(
+
+clients.openWindow(url)
+
+);
+
+});
