@@ -2195,25 +2195,13 @@ let res = await fetch(
 let data = await res.json();
 
 document.getElementById(
-
 "breakingNews"
-
 ).innerHTML =
 
-"🔥 " +
-
-data.items[0].title +
-
-" ⚡ " +
-
-data.items[1].title +
-
-" ⚡ " +
-
-data.items[2].title;
-
-}
-
+data.items
+.slice(0,10)
+.map(item => "⚡ " + item.title)
+.join(" 🔴 ");
 loadBreaking();
   function updateClock(){
 
