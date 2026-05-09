@@ -267,6 +267,57 @@ Breaking News • Trending Videos • Viral Shorts 🌍🔥
 </p>
 
 </div>
+  <div id="newsBox"></div>
+
+<script>
+
+fetch(
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/Tech"
+)
+
+.then(res => res.json())
+
+.then(data => {
+
+let output = "";
+
+data.items.forEach(post => {
+
+output += `
+
+<div class="card">
+
+<img src="${post.thumbnail}" width="100%">
+
+<h2>${post.title}</h2>
+
+<p>
+
+${post.description.slice(0,120)}
+
+...
+
+</p>
+
+<a href="${post.link}" target="_blank">
+
+Read More
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(
+"newsBox"
+).innerHTML = output;
+
+});
+
+</script>
 <div class="bottomNav">
 
 <a href="index.html">🏠</a>
