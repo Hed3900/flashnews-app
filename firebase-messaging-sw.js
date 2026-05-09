@@ -26,7 +26,7 @@ messaging.onBackgroundMessage(function(payload) {
 
     icon:
       "https://hed3900.github.io/flashnews-app/icon-192.png",
-
+image: "https://www.flashnews24.site/image.jpg"
     data: {
       url:
         payload.data?.url ||
