@@ -3074,7 +3074,7 @@ Breaking News • World • Tech • Sports
 
     </footer>  
   <div class="overlay"></div>
-  <script type="module">
+<script type="module">
 
 import { initializeApp }
 
@@ -3095,7 +3095,8 @@ from
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyALYtdua5TsOHOCMhcCGB943fdJD63BbS0",
+apiKey:
+"AIzaSyALYtdua5TsOHOCMhcCGB943fdJD63BbS0",
 
 authDomain:
 "flashnews24-51c47.firebaseapp.com",
@@ -3120,31 +3121,24 @@ initializeApp(firebaseConfig);
 const messaging =
 getMessaging(app);
 
-Notification
-.requestPermission()
-
-.then(permission=>{
-
-if(permission==="granted"){
-
-console.log(
-"Notifications allowed"
-);
-
-}
-
-});
-    
-
 navigator.serviceWorker
 
 .register(
 "/flashnews-app/firebase-messaging-sw.js"
 )
 
-.then((registration)=>{
+.then(async(registration)=>{
 
-getToken(
+const permission =
+
+await Notification
+.requestPermission();
+
+if(permission==="granted"){
+
+const currentToken =
+
+await getToken(
 
 messaging,
 
@@ -3159,37 +3153,24 @@ registration
 
 }
 
-)
-
-.then((currentToken)=>{
+);
 
 alert(currentToken);
 
-});
-
-});
-  </script>
-  <script>
-
-if(Notification.permission !== "granted"){
-
-Notification
-.requestPermission()
-
-.then(permission=>{
-
-if(permission==="granted"){
-
-alert(
-"Notifications Enabled 🔔"
-);
+console.log(currentToken);
 
 }
 
+})
+
+.catch((err)=>{
+
+alert(err);
+
+console.log(err);
+
 });
 
-}
-
-  </script>
+</script>
 </body>
 </html>
