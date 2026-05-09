@@ -25,16 +25,13 @@ messaging.onBackgroundMessage(function(payload) {
     payload.notification?.title || 'Flash News';
 
   const notificationOptions = {
-    body:
-      payload.notification?.body || 'Breaking news update',
-   icon: 'https://hed3900.github.io/flashnews-app/icon-192.png''
-  };
+  body: payload.notification?.body || "Breaking news update",
+  icon: "https://hed3900.github.io/flashnews-app/icon-192.png",
 
-  self.registration.showNotification(
-    notificationTitle,
-    notificationOptions
-  );
-});
+  data: {
+    url: payload.data?.url || "https://hed3900.github.io/flashnews-app/"
+  }
+};
 self.addEventListener("notificationclick", function(event) {
 
 event.notification.close();
