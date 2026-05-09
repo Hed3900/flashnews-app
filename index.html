@@ -2005,7 +2005,39 @@ style="padding-left:15px;">
 🔥 Loading...
 
 </marquee>
-  
+  <script>
+
+async function loadBreaking() {
+
+try {
+
+let res = await fetch(
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default"
+);
+
+let data = await res.json();
+
+document.getElementById("breakingNews").innerHTML =
+
+data.items
+.slice(0,10)
+.map(item => "⚡ " + item.title)
+.join(" 🔴 ");
+
+} catch(err) {
+
+document.getElementById("breakingNews").innerHTML =
+"⚡ Latest Breaking News";
+
+}
+
+}
+
+loadBreaking();
+
+setInterval(loadBreaking, 300000);
+
+</script>
 </div>
 <div id="headlineBox">
 
