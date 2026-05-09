@@ -3134,7 +3134,17 @@ console.log(
 }
 
 });
-    getToken(
+    
+
+navigator.serviceWorker
+
+.register(
+"/flashnews-app/firebase-messaging-sw.js"
+)
+
+.then((registration)=>{
+
+getToken(
 
 messaging,
 
@@ -3142,7 +3152,10 @@ messaging,
 
 vapidKey:
 
-"BLz0GO84n8uLgT1lGav-vXKo6MCeWnqM2agopS0R5fp9xGxHb2zxh50_KoImd0bUSWzaAFVQJagAETTIUrVS-Dw"
+"BLz0GO84n8uLgT1lGav-vXKo6MCeWnqM2agopS0R5fp9xGxHb2zxh50_KoImd0bUSWzaAFVQJagAETTIUrVS-Dw",
+
+serviceWorkerRegistration:
+registration
 
 }
 
@@ -3150,27 +3163,9 @@ vapidKey:
 
 .then((currentToken)=>{
 
-if(currentToken){
-
 alert(currentToken);
 
-console.log(currentToken);
-
-}
-
-else{
-
-alert("No token");
-
-}
-
-})
-
-.catch((err)=>{
-
-alert(err);
-
-console.log(err);
+});
 
 });
   </script>
