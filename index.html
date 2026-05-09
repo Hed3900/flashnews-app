@@ -3165,7 +3165,42 @@ console.log(currentToken);
 }
 
 });
+  import {
 
+onMessage
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
+onMessage(
+
+messaging,
+
+(payload)=>{
+
+alert(
+payload.notification.title
+);
+
+new Notification(
+
+payload.notification.title,
+
+{
+
+body:
+payload.notification.body,
+
+icon:
+"/flashnews-app/icon-192.png"
+
+}
+
+);
+
+});
 </script>
   <script>
 Notification.requestPermission().then((permission) => {
