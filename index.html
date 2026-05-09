@@ -3165,7 +3165,10 @@ currentToken
   </script>
   <script>
 
-Notification.requestPermission()
+if(Notification.permission !== "granted"){
+
+Notification
+.requestPermission()
 
 .then(permission=>{
 
@@ -3179,8 +3182,8 @@ alert(
 
 });
 
-</script>
+}
 
-</body>
+  </script>
 </body>
 </html>
