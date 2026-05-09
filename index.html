@@ -2041,7 +2041,7 @@ onclick="location.reload()">
   
 <div id="newsBox"></div>
 <script>
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default/-/BreakingNews")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.flashnews24.site/feeds/posts/default")
 .then(response => response.json())
 
 .then(data => {
@@ -2293,34 +2293,39 @@ body:"Breaking News Alert From Bava 😄"
 );
 
 }
-let headlines = [
+async function loadTicker() {
 
-"🔥 Heavy rains alert issued",
+const rssUrl =
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml";
 
-"⚽ India wins thrilling match",
+const response = await fetch(rssUrl);
 
-"🤖 AI technology going viral",
+const data = await response.json();
 
-"🌍 Global summit begins today"
-
-];
+let headlines = data.items.map(item => item.title);
 
 let count = 0;
 
-setInterval(function(){
+document.getElementById("headlineBox").innerHTML =
+headlines[0];
 
-document.getElementById("headlineBox")
-.innerHTML = headlines[count];
+setInterval(() => {
 
 count++;
 
 if(count >= headlines.length){
-
 count = 0;
+}
+
+document.getElementById("headlineBox").innerHTML =
+"🔥 " + headlines[count];
+
+}, 3000);
 
 }
 
-},2000);
+loadTicker();
+
 let username =
 localStorage.getItem("user");
 
