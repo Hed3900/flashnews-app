@@ -3076,93 +3076,70 @@ Breaking News • World • Tech • Sports
   <div class="overlay"></div>
 <script type="module">
 
-import { initializeApp }
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
-from
+import { getMessaging, getToken }
 
-"https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-
-import {
-
-getMessaging,
-getToken
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyALYtdua5TsOHOCmH2CGB943fdJD63BbS0",
+apiKey: "AIzaSyALYtdua5TsOHOCmH2CGB943fdJD63BbS0",
 
-authDomain:
-"flashnews24-51c47.firebaseapp.com",
+authDomain: "flashnews24-51c47.firebaseapp.com",
 
-projectId:
-"flashnews24-51c47",
+projectId: "flashnews24-51c47",
 
-storageBucket:
-"flashnews24-51c47.firebasestorage.app",
+storageBucket: "flashnews24-51c47.firebasestorage.app",
 
-messagingSenderId:
-"685448664344",
+messagingSenderId: "685448664344",
 
-appId:
-"1:685448664344:web:e88275c1470dad9b97426d",
-
-measurementId:
-"G-TFYSDH8M2J"
+appId: "1:685448664344:web:e88275c1470dad9b97426d"
 
 };
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const messaging =
-getMessaging(app);
+const messaging = getMessaging(app);
 
-navigator.serviceWorker
-
-.register(
+navigator.serviceWorker.register(
 "/flashnews-app/firebase-messaging-sw.js"
 )
 
-.then(async(registration)=>{
+.then((registration) => {
 
-const permission =
-
-await Notification
-.requestPermission();
-
-if(permission==="granted"){
-
-const token =
-
-await getToken(
-
-messaging,
-
-{
+getToken(messaging, {
 
 vapidKey:
-
 "BLz0GO84n8uLgT1lGav-vXKo6MCeWnqM2agopS0R5fp9xGxHb2zxh50_KoImd0bUSWzaAFVQJagAETTIUrVS-Dw",
 
-serviceWorkerRegistration:
-registration
+serviceWorkerRegistration: registration
+
+})
+
+.then((currentToken) => {
+
+if(currentToken){
+
+alert(currentToken);
+
+console.log(currentToken);
+
+}else{
+
+alert("No token");
 
 }
 
-);
+})
 
-alert(token);
+.catch((err)=>{
 
-console.log(token);
+alert(err);
 
-}
+console.log(err);
+
+});
 
 });
 
