@@ -51,12 +51,5 @@ self.addEventListener("notificationclick", function(event) {
   event.waitUntil(
     clients.openWindow(url)
   );
-  
-self.addEventListener('notificationclick', function(event) {
-  event.notification.close();
 
-  event.waitUntil(
-    clients.openWindow('https://www.flashnews24.site')
-  );
-  
 });
