@@ -1,129 +1,194 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<link rel="manifest"
-href="manifest.json">
-<title>Article</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>FlashNews24 Article</title>
 
 <style>
 
 body{
-background:#111;
+margin:0;
+background:#000;
+font-family:Arial,sans-serif;
 color:white;
-font-family:Arial;
-padding:20px;
 }
 
-img{
+.header{
+background:#111;
+padding:15px;
+font-size:28px;
+font-weight:bold;
+color:red;
+text-align:center;
+box-shadow:0 2px 10px rgba(255,0,0,0.3);
+}
+
+.article-container{
+padding:15px;
+}
+
+.article-image{
 width:100%;
 border-radius:15px;
+margin-bottom:15px;
 }
 
-h1{
-font-size:32px;
+.article-title{
+font-size:30px;
+font-weight:bold;
+line-height:1.4;
+margin-bottom:15px;
 }
 
-p{
+.article-content{
 font-size:20px;
-line-height:1.6;
-color:#ccc;
+line-height:1.8;
+color:#ddd;
 }
-#shareBtn{
 
-margin-top:20px;
-
-padding:15px 25px;
-
+.back-btn{
+display:inline-block;
+margin-top:25px;
+padding:12px 20px;
 background:red;
-
 color:white;
-
-border:none;
-
-border-radius:12px;
-
-font-size:18px;
-
+text-decoration:none;
+border-radius:10px;
 font-weight:bold;
-
 }
-#saveBtn{
 
-margin-top:15px;
-
-padding:15px 25px;
-
-background:gold;
-
-color:black;
-
-border:none;
-
-border-radius:12px;
-
-font-size:18px;
-
+.trending-title{
+color:red;
+font-size:28px;
 font-weight:bold;
-
+padding:15px;
 }
-  
+
+.trend-card{
+background:#111;
+margin:15px;
+border-radius:15px;
+overflow:hidden;
+}
+
+.trend-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.trend-content{
+padding:15px;
+}
+
+.trend-content h2{
+font-size:22px;
+line-height:1.4;
+margin:0;
+}
+
+.readmore{
+display:inline-block;
+margin-top:10px;
+padding:10px 18px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<img src="https://picsum.photos/600/300">
+<div class="header">
+FlashNews24
+</div>
 
-<h1>Breaking News Article 🔥</h1>
-<p>
+<div class="article-container">
 
-This is full article page of Flash News app.
-You can write complete news content here 😄
+<img id="article-image" class="article-image">
 
-</p>
+<div id="article-title" class="article-title"></div>
 
-<button onclick="shareNews()" id="shareBtn">
+<div id="article-content" class="article-content"></div>
 
-📤 Share News
+<a href="index.html" class="back-btn">
+← Back Home
+</a>
 
-</button>
-<button onclick="saveNews()" id="saveBtn">
+</div>
 
-⭐ Save News
+<div class="trending-title">
+🔥 Trending News
+</div>
 
-</button>
+<div id="trending-news"></div>
+
 <script>
 
-function shareNews(){
+const params = new URLSearchParams(window.location.search);
 
-navigator.share({
+document.getElementById("article-title").innerHTML =
+params.get("title");
 
-title:"Flash News",
+document.getElementById("article-image").src =
+params.get("image");
 
-text:"Check this breaking news from Flash News 🔥",
+document.getElementById("article-content").innerHTML =
+params.get("content");
 
-url:window.location.href
+function loadTrending(data){
 
-});
+let html = '';
+
+let posts = data.feed.entry;
+
+for(let i=0;i<posts.length;i++){
+
+let post = posts[i];
+
+let title = post.title.$t;
+
+let link = post.link.find(l => l.rel === 'alternate').href;
+
+let image = post.media$thumbnail
+? post.media$thumbnail.url.replace('s72-c','s800')
+: 'https://via.placeholder.com/800x400';
+
+html += `
+
+<div class="trend-card">
+
+<img src="${image}">
+
+<div class="trend-content">
+
+<h2>${title}</h2>
+
+<a class="readmore" href="${link}">
+Read More →
+</a>
+
+</div>
+
+</div>
+
+`;
 
 }
-function saveNews(){
 
-localStorage.setItem(
-"savedNews",
-"Breaking News Article Saved 🔥"
-);
-
-alert("News Saved 😄");
+document.getElementById("trending-news").innerHTML = html;
 
 }
 
 </script>
-</body>
 
+<script src="https://www.flashnews24.site/feeds/posts/default/-/Trending?alt=json-in-script&callback=loadTrending"></script>
+
+</body>
 </html>
