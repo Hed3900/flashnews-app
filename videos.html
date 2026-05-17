@@ -287,110 +287,94 @@ Breaking News • Trending Videos • Viral Shorts 🌍🔥
 
 </div>
   
+<div id="trending-news"></div>
+
 <style>
-.trending-container{
-  padding:15px;
-  background:#000;
+#trending-news{
+padding:10px;
+background:#000;
 }
 
-.trending-title{
-  color:#ff0000;
-  font-size:28px;
-  font-weight:bold;
-  margin-bottom:20px;
-  text-align:center;
+.trend-card{
+background:#111;
+margin-bottom:20px;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(255,0,0,0.3);
 }
 
-.trending-post{
-  background:#111;
-  border-radius:18px;
-  margin-bottom:18px;
-  overflow:hidden;
-  box-shadow:0 0 10px rgba(255,0,0,0.3);
-  transition:0.3s;
+.trend-card img{
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
-.trending-post:hover{
-  transform:scale(1.02);
+.trend-content{
+padding:15px;
 }
 
-.trending-post img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
+.trend-content h2{
+color:#fff;
+font-size:22px;
+line-height:1.4;
+margin:0;
 }
 
-.trending-content{
-  padding:15px;
-}
-
-.trending-content h2{
-  color:white;
-  font-size:22px;
-  margin:0;
-  line-height:1.4;
-}
-
-.trending-btn{
-  display:inline-block;
-  margin-top:12px;
-  background:red;
-  color:white;
-  padding:10px 18px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
+.readmore{
+display:inline-block;
+margin-top:12px;
+padding:10px 18px;
+background:red;
+color:#fff;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
 }
 </style>
 
-<div class="trending-container">
-
-<div class="trending-title">
-🔥 Trending News
-</div>
-
-<div id="trending-feed"></div>
-
-</div>
-
 <script>
-fetch('/feeds/posts/default/-/jobs?alt=json')
-.then(response => response.json())
+const feed =
+'https://www.flashnews24.site/feeds/posts/default/-/jobs?alt=json';
+
+fetch(feed)
+.then(res => res.json())
 .then(data => {
 
-let posts = data.feed.entry;
-let output = '';
+let html = '';
 
-posts.forEach(post => {
+data.feed.entry.forEach(post => {
 
 let title = post.title.$t;
 
 let link = post.link.find(l => l.rel === 'alternate').href;
 
-let thumbnail = post.media$thumbnail
+let image = post.media$thumbnail
 ? post.media$thumbnail.url.replace('/s72-c/','/s800/')
 : 'https://via.placeholder.com/800x400';
 
-output += `
-<div class="trending-post">
+html += `
 
-<img src="${thumbnail}">
+<div class="trend-card">
 
-<div class="trending-content">
+<img src="${image}">
+
+<div class="trend-content">
 
 <h2>${title}</h2>
 
-<a class="trending-btn" href="${link}">
+<a class="readmore" href="${link}">
 Read More →
 </a>
 
 </div>
+
 </div>
+
 `;
 
 });
 
-document.getElementById('trending-feed').innerHTML = output;
+document.getElementById('trending-news').innerHTML = html;
 
 });
 </script>
