@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.flashnews24.app",
+      "sha256_cert_fingerprints": [
+        "C8:F5:78:B9:9F:E3:F6:1C:93:45:1C:2A:B4:26:0F:D9:65:88:2F:04:9C:C4:81:3C:E5:F5:58:D3:8F:40"
+      ]
+    }
+  }
+]
