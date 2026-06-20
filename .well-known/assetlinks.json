@@ -8,7 +8,8 @@
       "namespace": "android_app",
       "package_name": "com.flashnews24.app",
       "sha256_cert_fingerprints": [
-        "EB:5B:B9:A0:84:75:DC:79:55:68:B8:7B:94:9A:67:F3:B0:75:65:1E:B6:14:68:98:2E:D8:B0:0F:C3:69:18:E1"
+        "EB:5B:B9:A0:84:75:DC:79:55:68:B8:7B:94:9A:67:F3:B0:75:65:1E:B6:14:68:98:2E:D8:B0:0F:C3:69:18:E1",
+        "C8:F5:78:B9:9F:E3:F6:1C:93:45:1C:2A:B4:26:0F:D9:65:88:2F:04:9C:C4:81:3C:E5:F5:58:D3:8F:40:0B:9C"
       ]
     }
   }
