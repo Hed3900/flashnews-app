@@ -1,12 +1,9 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// firebase-messaging-sw.js
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+importScripts('https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging-compat.js');
+
+firebase.initializeApp({
   apiKey: "AIzaSyD3iAhm2hzUabQf9TIfrSxa7o10tFCMmqA",
   authDomain: "flashnews24-5bfd6.firebaseapp.com",
   projectId: "flashnews24-5bfd6",
@@ -14,8 +11,49 @@ const firebaseConfig = {
   messagingSenderId: "192814639105",
   appId: "1:192814639105:web:775cfcafeb0e0c38577800",
   measurementId: "G-M48NN30S6Z"
-};
+});
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function(payload) {
+
+  const notificationTitle =
+    payload.notification?.title || "Flash News";
+
+  const notificationOptions = {
+    body:
+      payload.notification?.body || "Breaking news update",
+
+    icon:
+      "https://hed3900.github.io/flashnews-app/icon-192.png",
+
+    image:
+      "https://www.flashnews24.site/image.jpg",
+
+    data: {
+      url:
+        payload.data?.url ||
+        "https://hed3900.github.io/flashnews-app/"
+    }
+  };
+
+  self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
+
+});
+
+self.addEventListener("notificationclick", function(event) {
+
+  event.notification.close();
+
+  const url =
+    event.notification.data?.url ||
+    "https://hed3900.github.io/flashnews-app/";
+
+  event.waitUntil(
+    clients.openWindow(url)
+  );
+
+});
