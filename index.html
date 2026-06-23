@@ -3140,15 +3140,11 @@ const firebaseConfig = {
 
 apiKey: "AIzaSyALYtdua5TsOHOCmH2CGB943fdJD63BbS0",
 
-authDomain: "flashnews24-51c47.firebaseapp.com",
-
-projectId: "flashnews24-51c47",
-
-storageBucket: "flashnews24-51c47.firebasestorage.app",
-
-messagingSenderId: "585448664344",
-
-appId: "1:585448664344:web:e88275c1470dad9b97426d"
+authDomain: "flashnews24-5bfd6.firebaseapp.com",
+projectId: "flashnews24-5bfd6",
+storageBucket: "flashnews24-5bfd6.firebasestorage.app",
+messagingSenderId: "192814639105",
+appId: "1:192814639105:web:775cfcafeb0e0c38577800"
 
 };
 
@@ -3161,13 +3157,16 @@ navigator.serviceWorker.register(
 )
 
 .then((registration) => {
+Notification.requestPermission().then((permission) => {
+
+if (permission === "granted") {
 
 getToken(messaging, {
 
-vapidKey:
-"BLz0GO84n8uLgT1lGav-vXKo6MCeWnqM2agopS0R5fp9xGxHb2zxh50_KoImd0bUSWzaAFVQJagAETTIUrVS-Dw",
+  vapidKey:
+  "BLzOG084n8uLgTl1Gav-vVKo6MCeWnqM2agopSOR5fp9xGxhb2zxh5Q_KoImdObUSWzaAFVQJagAETTIUrVS-Dw",
 
-serviceWorkerRegistration: registration
+  serviceWorkerRegistration: registration
 
 })
 
@@ -3192,7 +3191,11 @@ alert(err);
 console.log(err);
 
 });
+} else {
+  alert("Notifications blocked");
+}
 
+});
 });
   import {
 
