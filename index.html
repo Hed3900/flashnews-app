@@ -3150,6 +3150,9 @@ appId: "1:192814639105:web:775cfcafeb0e0c38577800"
 
 const app = initializeApp(firebaseConfig);
 alert("Firebase Loaded");
+  Notification.requestPermission().then(permission => {
+  alert(permission);
+});
 const messaging = getMessaging(app);
 
 navigator.serviceWorker.register(
