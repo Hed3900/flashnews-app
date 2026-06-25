@@ -36,12 +36,25 @@ console.log("No New Post");
 return;
 
 }
+const image =
+  latest.enclosure?.url ||
+  latest.enclosure?.link ||
+  "https://www.flashnews24.site/favicon.ico";
+
 const message = {
   notification: {
-    title: "🚨 Breaking News",
-    body: latest.title
+    title: "🚨 FlashNews24",
+    body: latest.title,
+    image: image
   },
   webpush: {
+    notification: {
+      title: "🚨 FlashNews24",
+      body: latest.title,
+      image: image,
+      icon: "https://www.flashnews24.site/favicon.ico",
+      badge: "https://www.flashnews24.site/favicon.ico"
+    },
     fcmOptions: {
       link: latest.link
     }
