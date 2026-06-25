@@ -3129,107 +3129,46 @@ padding-bottom:120px;
     </footer>  
   <div class="overlay"></div>
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-
-import { getMessaging, getToken }
-
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
 
 const firebaseConfig = {
-
-apiKey: "AIzaSyALYtdua5TsOHOCmH2CGB943fdJD63BbS0",
-
-authDomain: "flashnews24-5bfd6.firebaseapp.com",
-projectId: "flashnews24-5bfd6",
-storageBucket: "flashnews24-5bfd6.firebasestorage.app",
-messagingSenderId: "192814639105",
-appId: "1:192814639105:web:2fd1fbe341d8c33e577800",
-measurementId: "G-E20Q4FXVCM"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "flashnews24-5bfd6.firebaseapp.com",
+  projectId: "flashnews24-5bfd6",
+  storageBucket: "flashnews24-5bfd6.firebasestorage.app",
+  messagingSenderId: "192814639105",
+  appId: "1:192814639105:web:2fd1fbe341d8c33e577800"
 };
 
 const app = initializeApp(firebaseConfig);
-
-  Notification.requestPermission().then(permission => {
-  
-});
 const messaging = getMessaging(app);
 
-navigator.serviceWorker.register(
-"/flashnews-app/firebase-messaging-sw.js"
-)
+async function initNotifications() {
 
-.then((registration) => {
-Notification.requestPermission().then((permission) => {
+  const permission = await Notification.requestPermission();
 
-if (permission === "granted") {
+  if (permission !== "granted") {
+    alert("Notification Permission Denied");
+    return;
+  }
 
-getToken(messaging, {
+  const registration = await navigator.serviceWorker.register("./firebase-messaging-sw.js");
 
-  vapidKey:
-  "BLzOG084n8uLgTl1Gav-vVKo6MCeWnqM2agopSOR5fp9xGxhb2zxh5Q_KoImdObUSWzaAFVQJagAETTIUrVS-Dw",
+  const token = await getToken(messaging, {
+    vapidKey: "NI_VAPID_KEY",
+    serviceWorkerRegistration: registration
+  });
 
-  serviceWorkerRegistration: registration
-
-})
-
-.then((currentToken) => {
-
-if(currentToken){
-  alert(currentToken);
-  console.log(currentToken);
-}else{
-  alert("No token");
-}
-})
-
-.catch((err)=>{
-
-alert(err);
-
-console.log(err);
-
-});
-} else {
-  alert("Notifications blocked");
+  if (token) {
+    console.log(token);
+    alert("Notification Ready");
+  } else {
+    alert("Token Not Found");
+  }
 }
 
-});
-});
-  import {
-
-logEvent
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-
-logEvent(
-
-analytics,
-
-"app_open"
-
-);
-
-logEvent(
-
-analytics,
-
-"news_view"
-
-);
-
-logEvent(
-
-analytics,
-
-"notification_open"
-
-);
-
+initNotifications();
 </script>
 </body>
 </html>
