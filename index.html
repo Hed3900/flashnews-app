@@ -3131,7 +3131,7 @@ padding-bottom:120px;
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
-
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD3iAhm2hzUabQf9TIfrSxa7o10tFCMmqA",
   authDomain: "flashnews24-5bfd6.firebaseapp.com",
@@ -3142,6 +3142,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 const messaging = getMessaging(app);
 
 async function initNotifications() {
