@@ -3163,6 +3163,12 @@ async function initNotifications() {
 
   if (token) {
      console.log("FCM Token generated successfully");
+    await setDoc(doc(db, "tokens", token), {
+  token: token,
+  createdAt: Date.now()
+});
+
+console.log("Token saved to Firestore");
   } else {
     alert("Token Not Found");
   }
