@@ -3160,7 +3160,7 @@ async function initNotifications() {
     vapidKey: "BNOWKXK21uLfihl_fg5BfRWkRH99kHGkZa5L-n7Oyhwj8b4FGrNRSBiV-ttSQQ3KMTbTIdLT2WU7gfvJ5O74jH0",
     serviceWorkerRegistration: registration
   });
-alert(token);
+  
   if (token) {
      console.log("FCM Token generated successfully");
     await setDoc(doc(db, "tokens", token), {
