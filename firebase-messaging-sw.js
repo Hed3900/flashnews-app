@@ -47,7 +47,7 @@ messaging.onBackgroundMessage(function(payload) {
 self.addEventListener("notificationclick", function(event) {
   event.notification.close();
 
-  const url = https://www.flashnews24.site/2026/06/How-to-Stay-Safe-During-Natural-Disasters-A-Complete-Guide-for-Every-Family.html;
+  const url = event.notification.data?.url || "https://www.flashnews24.site/";
 
   event.waitUntil(
     clients.matchAll({ type: "window", includeUncontrolled: true }).then(function(clientList) {
