@@ -45,15 +45,18 @@ messaging.onBackgroundMessage(function(payload) {
 });
 
 self.addEventListener("notificationclick", function(event) {
-
   event.notification.close();
 
-  const url =
-    event.notification.data?.url ||
-    "https://hed3900.github.io/flashnews-app/";
+  const url = event.notification.data.url;
 
   event.waitUntil(
-    clients.openWindow(url)
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then(function(clientList) {
+      for (const client of clientList) {
+        client.navigate(url);
+        client.focus();
+        return;
+      }
+      return clients.openWindow(url);
+    })
   );
-
 });
