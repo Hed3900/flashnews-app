@@ -41,7 +41,6 @@ const message = {
     title: "🚨 Breaking News",
     body: latest.title
   },
-  topic: "breaking-news",
   webpush: {
     fcmOptions: {
       link: latest.link
