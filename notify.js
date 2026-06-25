@@ -36,10 +36,14 @@ console.log("No New Post");
 return;
 
 }
-const image =
-  latest.enclosure?.url ||
-  latest.enclosure?.link ||
-  "https://www.flashnews24.site/favicon.ico";
+let image = "https://www.flashnews24.site/favicon.ico";
+
+if (latest.content) {
+  const match = latest.content.match(/<img[^>]+src="([^"]+)"/i);
+  if (match) {
+    image = match[1];
+  }
+}
 
 const message = {
   notification: {
