@@ -3161,9 +3161,7 @@ async function initNotifications() {
   });
 
   if (token) {
-    console.log(token);
-navigator.clipboard.writeText(token);
-alert("Token copied!");
+     console.log("FCM Token generated successfully");
   } else {
     alert("Token Not Found");
   }
