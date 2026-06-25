@@ -25,16 +25,16 @@ messaging.onBackgroundMessage(function(payload) {
       payload.notification?.body || "Breaking news update",
 
     icon:
-      "https://hed3900.github.io/flashnews-app/icon-192.png",
+      "https://www.flashnews24.site/favicon.ico",
 
-    image:
-      "https://www.flashnews24.site/image.jpg",
+    image: payload.notification?.image
 
     data: {
-      url:
-        payload.data?.url ||
-        "https://hed3900.github.io/flashnews-app/"
-    }
+  url: payload.fcmOptions?.link ||
+       payload.data?.link ||
+       "https://www.flashnews24.site/"
+  }
+
   };
 
   self.registration.showNotification(
