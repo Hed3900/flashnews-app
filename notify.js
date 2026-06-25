@@ -13,7 +13,7 @@ credential: admin.credential.cert(serviceAccount)
 });
 
 const messaging = admin.messaging();
-
+const db = admin.firestore();
 const FEED_URL =
 "https://www.flashnews24.site/feeds/posts/default?alt=rss";
 
