@@ -47,10 +47,23 @@ const message = {
     }
   }
 };
+const snapshot = await db.collection("tokens").get();
 
+const tokens = [];
+
+snapshot.forEach((doc) => {
+  const data = doc.data();
+  if (data.token) {
+    tokens.push(data.token);
+  }
+});
 try {
 
-  await messaging.send(message);
+  await messaging.sendEachForMulticast({
+  tokens: tokens,
+  notification: message.notification,
+  webpush: message.webpush
+});
 
   console.log("Notification Sent");
 
