@@ -87,9 +87,7 @@ await docRef.set({
 });
   
 } catch (err) {
-
-  console.error(err);
-
+  console.error("Notification Error:", err);
 }
 
 }
