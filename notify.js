@@ -73,13 +73,14 @@ snapshot.forEach((doc) => {
 });
 try {
 
-  await messaging.sendEachForMulticast({
+const response = await messaging.sendEachForMulticast({
   tokens: tokens,
   notification: message.notification,
   webpush: message.webpush
 });
 
-  console.log("Notification Sent");
+console.log("Notification Response:");
+console.log(JSON.stringify(response, null, 2));
 
 await docRef.set({
   link: latest.link,
