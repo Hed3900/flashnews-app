@@ -23,18 +23,14 @@ const feed = await parser.parseURL(FEED_URL);
 
 const latest = feed.items[0];
 
-const oldPost =
-fs.readFileSync(
-"lastpost.txt",
-"utf8"
-);
+const docRef = db.collection("settings").doc("lastPost");
+const doc = await docRef.get();
 
-if(oldPost === latest.link){
+const oldPost = doc.exists ? doc.data().link : "";
 
-console.log("No New Post");
-
-return;
-
+if (oldPost === latest.link) {
+    console.log("No New Post");
+    return;
 }
 let image = "https://www.flashnews24.site/favicon.ico";
 
@@ -84,11 +80,10 @@ try {
 
   console.log("Notification Sent");
 
-  fs.writeFileSync(
-    "lastpost.txt",
-    latest.link
-  );
-
+  await docRef.set({
+  link: latest.link
+});
+  
 } catch (err) {
 
   console.error(err);
