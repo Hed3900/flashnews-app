@@ -25,8 +25,9 @@ const latest = feed.items[0];
 
 const docRef = db.collection("settings").doc("lastPost");
 const doc = await docRef.get();
-
 const oldPost = doc.exists ? doc.data().link : "";
+console.log("Latest RSS:", latest.link);
+console.log("Firestore:", oldPost);
 
 if (oldPost === latest.link) {
     console.log("No New Post");
