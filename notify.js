@@ -80,8 +80,10 @@ try {
 
   console.log("Notification Sent");
 
-  await docRef.set({
-  link: latest.link
+await docRef.set({
+  link: latest.link,
+  title: latest.title,
+  updatedAt: Date.now()
 });
   
 } catch (err) {
