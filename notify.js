@@ -46,13 +46,15 @@ const message = {
   notification: {
     title: "🚨 FlashNews24",
     body: latest.title,
-
+image:image,
+      icon: "https://www.flashnews24.site/favicon.ico",
+      badge: "https://www.flashnews24.site/favicon.ico"
   },
   webpush: {
     notification: {
       title: "🚨 FlashNews24",
       body: latest.title,
-    
+    image: image,
       icon: "https://www.flashnews24.site/favicon.ico",
       badge: "https://www.flashnews24.site/favicon.ico"
     },
