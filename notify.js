@@ -45,8 +45,8 @@ if (latest.content) {
 const message = {
   topic: "all",
   notification: {
-    title: title,
-    body: body
+  title: latest.title,
+  body: latest.title,
   },
   webpush: {
     notification: {
