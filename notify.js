@@ -43,13 +43,28 @@ if (latest.content) {
 }
 
 const message = {
+  topic: "all",
   notification: {
-    title: "🚨 FlashNews24",
-    body: latest.title,
-image:image,
-      icon: "https://www.flashnews24.site/favicon.ico",
-      badge: "https://www.flashnews24.site/favicon.ico"
+    title: title,
+    body: body,
+      image: imageUrl
   },
+  webpush: {
+    notification: {
+      icon: "https://www.flashnews24.site/favicon.ico"
+        image: imageUrl
+    },
+    fcmOptions: {
+      link: link
+    }
+  },
+  android: {
+    priority: "high",
+    notification: {
+      clickAction: "FLUTTER_NOTIFICATION_CLICK"
+    }
+  }
+};
   webpush: {
     notification: {
       title: "🚨 FlashNews24",
