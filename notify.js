@@ -46,13 +46,11 @@ const message = {
   topic: "all",
   notification: {
     title: title,
-    body: body,
-      image: imageUrl
+    body: body
   },
   webpush: {
     notification: {
       icon: "https://www.flashnews24.site/favicon.ico"
-        image: imageUrl
     },
     fcmOptions: {
       link: link
