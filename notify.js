@@ -41,7 +41,7 @@ if (latest.content) {
     image = match[1];
   }
 }
-
+console.log("Image URL:", image);
 const message = {
   topic: "all",
   notification: {
@@ -51,6 +51,7 @@ const message = {
   webpush: {
     notification: {
       icon: "https://www.flashnews24.site/favicon.ico"
+        image: image
     },
     fcmOptions: {
   link: latest.link
@@ -60,6 +61,7 @@ const message = {
     priority: "high",
     notification: {
       clickAction: "FLUTTER_NOTIFICATION_CLICK"
+        imageUrl: image
     }
   }
 };
