@@ -46,14 +46,14 @@ const message = {
   topic: "all",
   notification: {
   title: latest.title,
-  body: latest.title,
+  body: latest.contentSnippet || "Tap to read the full story"
   },
   webpush: {
     notification: {
       icon: "https://www.flashnews24.site/favicon.ico"
     },
     fcmOptions: {
-      link: link
+  link: latest.link
     }
   },
   android: {
