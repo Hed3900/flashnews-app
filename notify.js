@@ -51,7 +51,6 @@ const message = {
   webpush: {
     notification: {
       icon: "https://www.flashnews24.site/favicon.ico"
-        image: image
     },
     fcmOptions: {
   link: latest.link
