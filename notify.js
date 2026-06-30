@@ -53,13 +53,14 @@ const message = {
       icon: "https://www.flashnews24.site/favicon.ico"
     },
     fcmOptions: {
-  link: latest.link
+  link: latest.link,
+        image: image
     }
   },
   android: {
     priority: "high",
     notification: {
-      clickAction: "FLUTTER_NOTIFICATION_CLICK"
+      clickAction: "FLUTTER_NOTIFICATION_CLICK",
         imageUrl: image
     }
   }
