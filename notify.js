@@ -49,21 +49,21 @@ const message = {
   body: latest.contentSnippet || "Tap to read the full story"
   },
   webpush: {
-    notification: {
-      icon: "https://www.flashnews24.site/favicon.ico"
-    },
-    fcmOptions: {
-  link: latest.link,
-        image: image
-    }
+  notification: {
+    icon: "https://www.flashnews24.site/favicon.ico",
+    image: image
   },
-  android: {
-    priority: "high",
-    notification: {
-      clickAction: "FLUTTER_NOTIFICATION_CLICK",
-        imageUrl: image
-    }
+  fcmOptions: {
+    link: latest.link
   }
+},
+android: {
+  priority: "high",
+  notification: {
+    clickAction: "FLUTTER_NOTIFICATION_CLICK",
+    imageUrl: image
+  }
+}
 };
 const snapshot = await db.collection("tokens").get();
 
@@ -80,7 +80,8 @@ try {
 const response = await messaging.sendEachForMulticast({
   tokens: tokens,
   notification: message.notification,
-  webpush: message.webpush
+  webpush: message.webpush,
+    android: message.android
 });
 
 console.log("Notification Response:");
