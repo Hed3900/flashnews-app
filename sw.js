@@ -1,4 +1,4 @@
-const CACHE_NAME = "flashnews-v2";
+const CACHE_NAME = "flashnews-v20260717";
 
 const urlsToCache = [
 
