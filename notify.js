@@ -44,26 +44,34 @@ if (latest.content) {
 console.log("Image URL:", image);
 const message = {
   topic: "all",
+
   notification: {
-  title: latest.title,
-  body: latest.contentSnippet || "Tap to read the full story"
+    title: latest.title,
+    body: latest.contentSnippet || "Tap to read the full story"
   },
+
+  data: {
+    link: latest.link,
+    articleId: latest.link
+  },
+
   webpush: {
-  notification: {
-    icon: "https://www.flashnews24.site/favicon.ico",
-    image: image
+    notification: {
+      icon: "https://www.flashnews24.site/favicon.ico",
+      image: image
+    },
+    fcmOptions: {
+      link: latest.link
+    }
   },
-  fcmOptions: {
-    link: latest.link
+
+  android: {
+    priority: "high",
+    notification: {
+      clickAction: "FLUTTER_NOTIFICATION_CLICK",
+      imageUrl: image
+    }
   }
-},
-android: {
-  priority: "high",
-  notification: {
-    clickAction: "FLUTTER_NOTIFICATION_CLICK",
-    imageUrl: image
-  }
-}
 };
 const snapshot = await db.collection("tokens").get();
 
