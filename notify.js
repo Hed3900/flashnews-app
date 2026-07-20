@@ -88,8 +88,9 @@ try {
 const response = await messaging.sendEachForMulticast({
   tokens: tokens,
   notification: message.notification,
+  data: message.data,
   webpush: message.webpush,
-    android: message.android
+  android: message.android
 });
 
 console.log("Notification Response:");
